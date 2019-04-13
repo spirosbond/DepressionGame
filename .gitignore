@@ -10,5 +10,4 @@ out/
 .project
 .settings
 .classpath
-core/sessions/
-src/
+src/main/webapp/core/sessions

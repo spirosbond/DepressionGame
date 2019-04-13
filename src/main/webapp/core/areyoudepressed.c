@@ -16,8 +16,8 @@ int main(int argc, char *argv[]) {
 	FILE *filereadptr, *filewriteptr;
 	unsigned char *buffer, mask, bufferbak;
 	char *filepath;
-	long filereadlen, index, filepathindex;
-	unsigned long long seed;
+	long filereadlen, filepathindex;
+	unsigned long long seed, index;
 	struct timeval tv;
 
 	for(int i=1; i<argc; i++){
@@ -93,11 +93,14 @@ int main(int argc, char *argv[]) {
 	}
 	printf("\n");
 	fflush(stdout);
-
+	
 	do{
-		index = 8*rand() % filereadlen;	// Returns a pseudo-random integer between 0 and filereadlen.
+		if(DEBUG_LEVEL>0){ printf("RAND_MAX %d\n", RAND_MAX);fflush(stdout);}
+
+		index = rand() % filereadlen;	// Returns a pseudo-random integer between 0 and filereadlen.
+
+		if(DEBUG_LEVEL>0){ printf("Index: %lld \n", index);fflush(stdout);}
 		bufferbak = buffer[index];
-		if(DEBUG_LEVEL>0){ printf("Index: %ld \n", index);fflush(stdout);}
 
 		mask = ~(1<<(rand() % 8));
 		buffer[index] = buffer[index] & mask;
@@ -106,8 +109,8 @@ int main(int argc, char *argv[]) {
 		if(DEBUG_LEVEL>0){ printf("Buffer before: %02x\n", bufferbak);fflush(stdout);}
 		if(DEBUG_LEVEL>0){ printf("Buffer after: %02x\n", buffer[index]);fflush(stdout);}
 	} while(buffer[index]==bufferbak);
-	
-	printf("%ld\n", index);
+
+	printf("%lld\n", index);
 	fflush(stdout);
 
 	filewriteptr = fopen( filepath, "wb" );
