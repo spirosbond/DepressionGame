@@ -1,5 +1,6 @@
 package depressiongame
 
+import grails.util.Environment
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
@@ -10,27 +11,61 @@ class GameController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index() {
-        def subdir = new File('core/sessions/' + session.getId())
+        def execFilename
+        if (Environment.current == Environment.DEVELOPMENT) {
+            execFilename = 'areyoudepressed.exe'
+        } else {
+            execFilename = 'areyoudepressed.o'
+        }
+//        def subdir = new File('core/sessions/' + session.getId())
+        def subdir = grailsApplication.mainContext.getResource('core/sessions/' + session.getId()).file
+
         if (!subdir.exists()) {
             subdir.mkdir()
+            log.error("creating session folder: " + subdir.getAbsolutePath())
         }
-        def coreExe = new File('core/areyoudepressed.exe')
-        def sessionExe = new File(subdir.getPath() + '/areyoudepressed.exe')
+        def coreExe
+        coreExe = grailsApplication.mainContext.getResource("core/" + execFilename).file
+
+
+        def sessionExe = new File(subdir.getPath() + '/' + execFilename)
         if (!sessionExe.exists()) {
             sessionExe << coreExe.bytes
+        }
+        def sessionExeTemp = new File(subdir.getPath() + '/_' + execFilename)
+        if (!sessionExeTemp.exists()) {
+            sessionExeTemp << coreExe.bytes
+        }
+
+        if (Environment.current == Environment.PRODUCTION) {
+
+            def subdirPath = subdir.getAbsolutePath()
+            "/bin/chmod +x $subdirPath/areyoudepressed.o".execute()
+            "/bin/chmod +x $subdirPath/_areyoudepressed.o".execute()
+
         }
 
         render(view: 'index', model: [sessionExe: sessionExe])
     }
 
     def runDepressionGameOnceAjax() {
-        def subdir = new File('core/sessions/' + session.getId())
-        def sessionExe = new File(subdir.getPath() + '/areyoudepressed.exe')
+
+        def execFilename
+        if (Environment.current == Environment.DEVELOPMENT) {
+            execFilename = 'areyoudepressed.exe'
+        } else {
+            execFilename = 'areyoudepressed.o'
+        }
+
+//      def subdir = new File('core/sessions/' + session.getId())
+        def subdir = grailsApplication.mainContext.getResource('core/sessions/' + session.getId()).file
+        def sessionExe = new File(subdir.getPath() + '/' + execFilename)
+        def sessionExeTemp = new File(subdir.getPath() + '/_' + execFilename)
 
         def sout = new StringBuilder()
         def serr = new StringBuilder()
 
-        def args = [sessionExe.getPath(), '-p', sessionExe.getPath()]
+        def args = [sessionExe.getPath(), '-p', sessionExeTemp.getPath()]
         def proc = new ProcessBuilder(args)
         Process process
         def areyoudepressed
@@ -42,8 +77,8 @@ class GameController {
         process = proc.start()
         process.consumeProcessOutput(sout, serr)
         process.waitForOrKill(20000)
-        println 'sout:\n' + sout
-        println 'serr:\n' + serr
+        log.error('sout:\n' + sout)
+        log.error('serr:\n' + serr)
 
         areyoudepressed = sout.toString().split('\n')
 
@@ -62,14 +97,14 @@ class GameController {
         render(template: 'depression_game', model: [sessionID: session.getId(), areyoudepressedQuote: areyoudepressedQuote, binaryText: binaryText, destroyedIndex: destroyedIndex, result: result])
     }
 
-    def resetSession(){
+    def resetSession() {
         session.invalidate()
-        redirect(uri:'/')
+        redirect(uri: '/')
     }
 
     def index_grails(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond gameService.list(params), model:[gameCount: gameService.count()]
+        respond gameService.list(params), model: [gameCount: gameService.count()]
     }
 
     def show(Long id) {
@@ -89,7 +124,7 @@ class GameController {
         try {
             gameService.save(game)
         } catch (ValidationException e) {
-            respond game.errors, view:'create'
+            respond game.errors, view: 'create'
             return
         }
 
@@ -115,7 +150,7 @@ class GameController {
         try {
             gameService.save(game)
         } catch (ValidationException e) {
-            respond game.errors, view:'edit'
+            respond game.errors, view: 'edit'
             return
         }
 
@@ -124,7 +159,7 @@ class GameController {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'game.label', default: 'Game'), game.id])
                 redirect game
             }
-            '*'{ respond game, [status: OK] }
+            '*' { respond game, [status: OK] }
         }
     }
 
@@ -139,9 +174,9 @@ class GameController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'game.label', default: 'Game'), id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -151,7 +186,7 @@ class GameController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'game.label', default: 'Game'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }

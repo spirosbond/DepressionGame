@@ -13,7 +13,6 @@
 *= require mobile
 *= require_self
 */
-@import url(https://fonts.googleapis.com/css?family=Khula:700);
 
 html,
 body {
@@ -26,7 +25,7 @@ body {
 }
 
 .console-container {
-    font-family: Khula;
+    font-family: 'Khula', sans-serif;
     font-size: calc(100% + 2vw + 1vh);
     line-height: 1em;
     text-align: center;
@@ -44,7 +43,7 @@ body {
 }
 
 .glyphicon-container {
-    font-family: Khula;
+    font-family: 'Khula', sans-serif;
     font-size: calc(100% + 2vw + 1vh);
     line-height: 1em;
     text-align: center;

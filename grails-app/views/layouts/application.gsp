@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width">
 
     <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
+    <link href="https://fonts.googleapis.com/css?family=Khula:700" rel="stylesheet">
 
     <asset:stylesheet src="bootstrap.min.css"/>
     <asset:stylesheet src="application.css"/>

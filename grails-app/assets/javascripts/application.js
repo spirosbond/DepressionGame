@@ -12,7 +12,7 @@
 
 function runDepressionGameOnceAjax (divToUpdate) {
     $.ajax({
-        url: '/game/runDepressionGameOnceAjax',
+        url: 'game/runDepressionGameOnceAjax',
         success: function (result) {
             divToUpdate.html(result);
         }
