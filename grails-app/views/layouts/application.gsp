@@ -8,7 +8,14 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
-    <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
+    <asset:link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
+    <asset:link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"/>
+    <asset:link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"/>
+    <asset:link rel="manifest" href="site.webmanifest"/>
+    <asset:link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5"/>
+    <meta name="msapplication-TileColor" content="#ffc40d">
+    <meta name="theme-color" content="#ffffff">
+
     <link href="https://fonts.googleapis.com/css?family=Khula:700" rel="stylesheet">
 
     <asset:stylesheet src="bootstrap.min.css"/>
