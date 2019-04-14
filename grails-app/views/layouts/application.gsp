@@ -25,6 +25,7 @@
     <asset:javascript src="jquery-3.3.1.min.js"/>
     <asset:javascript src="bootstrap.min.js"/>
 
+    <g:render template="/layouts/ganalytics"/>
 
     <g:layoutHead/>
 </head>

@@ -18,6 +18,8 @@
 
     <asset:stylesheet src="application.css"/>
 
+    <g:render template="/layouts/ganalytics"/>
+
     <g:layoutHead/>
 </head>
 <body>
