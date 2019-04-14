@@ -13,5 +13,6 @@ class UrlMappings {
         "/index_admin"(view: '/index_admin')
         "500"(view: '/error')
         "404"(view: '/notFound')
+        "/robots.txt" (view: "/robots")
     }
 }
