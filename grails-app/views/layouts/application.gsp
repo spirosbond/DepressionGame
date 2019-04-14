@@ -28,7 +28,8 @@
 
     <g:layoutHead/>
 </head>
-<body class="bg-dark" >
+
+<body class="bg-dark">
 
 <asset:javascript src="application.js"/>
 
@@ -38,9 +39,13 @@
 <footer class="page-footer bg-secondary font-small fixed-bottom">
 
     <!-- Copyright -->
-    <div class="footer-copyright text-light text-center py-3">© 2019 Copyright:
-        <a class="text-danger" href="#"> Depression Game</a>
-    </div>
+    <div class="footer-copyright text-light text-center py-3">© 2019 Copyright - Open Source licensed under MIT License:
+        <a class="text-danger" href="https://github.com/spirosbond/DepressionGame" target="_blank">Depression Game</a><br/>
+    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">
+        <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" />
+    </a>
+    This work is licensed under a <a class="text-danger" rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>
+</div>
     <!-- Copyright -->
 
 </footer>
