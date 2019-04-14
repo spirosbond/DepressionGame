@@ -10,6 +10,10 @@ class Game {
     Long destroyedIndex
     String result
 
+    static mapping = {
+        quote type:"text"
+    }
+
     static constraints = {
     }
 }

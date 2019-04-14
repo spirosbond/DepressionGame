@@ -10,7 +10,7 @@
 //= require_tree .
 //= require_self
 
-function runDepressionGameOnceAjax (divToUpdate) {
+function runDepressionGameOnceAjax(divToUpdate) {
     $.ajax({
         url: 'game/runDepressionGameOnceAjax',
         success: function (result) {

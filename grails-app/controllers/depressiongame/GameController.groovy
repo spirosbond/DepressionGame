@@ -69,10 +69,10 @@ class GameController {
         def proc = new ProcessBuilder(args)
         Process process
         def areyoudepressed
-        def areyoudepressedQuote
+        def areyoudepressedQuote = ""
         def binaryText
-        def destroyedIndex
-        def result
+        def destroyedIndex = "00"
+        def result = "0"
 
         process = proc.start()
         process.consumeProcessOutput(sout, serr)
@@ -82,16 +82,23 @@ class GameController {
 
         areyoudepressed = sout.toString().split('\n')
 
-        areyoudepressedQuote = areyoudepressed[0]
-        binaryText = areyoudepressed[1]
-        destroyedIndex = areyoudepressed[2]
-        result = areyoudepressed[3]
+        try {
+            if (!areyoudepressed[0].isEmpty()) areyoudepressedQuote = areyoudepressed[0]
+            binaryText = areyoudepressed[1]
+            destroyedIndex = areyoudepressed[2]
+            result = areyoudepressed[3]
 
-        new Game(sessionID: session.getId(), quote: areyoudepressedQuote, destroyedIndex: Long.valueOf(destroyedIndex), result: result).save()
+            new Game(sessionID: session.getId(), quote: areyoudepressedQuote, destroyedIndex: Long.valueOf(destroyedIndex), result: result).save()
+
+        } catch (Exception e) {
+            log.error('Exception :\n' + e.toString())
+            areyoudepressedQuote = areyoudepressedQuote + e.toString()
+        }
 
         if (!result.equals('1')) {
             session.invalidate()
         }
+        sessionExe.bytes = sessionExeTemp.bytes
 //        log.println "Timeout: ${session.getMaxInactiveInterval()} seconds"
 
         render(template: 'depression_game', model: [sessionID: session.getId(), areyoudepressedQuote: areyoudepressedQuote, binaryText: binaryText, destroyedIndex: destroyedIndex, result: result])
