@@ -59,6 +59,8 @@
                 </ul>
             </div>
             <div class="modal-footer">
+                <div class="fb-like mr-auto" data-href="http://depressionga.me/" data-layout="button" data-action="like" data-size="small" data-show-faces="true" data-share="true">
+                </div>
                 <button type="button" class="btn btn-secondary"><a class="text-white" href="mailto:bigappledev@gmail.com" target="_blank">Want to be listed?</a></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
