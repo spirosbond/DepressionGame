@@ -48,6 +48,9 @@
                 Depression is not a game, neither is this website.
                 We hope to raise awareness and asking your support to help others.</p>
                 <br/>
+                <p class="text-justify font-weight-light">Our main credo is that depression can be treated.
+                Visit <a href="https://ifightdepression.com" class="text-danger" target="_blank">ifightdepression.com</a> for more resources and to seek help.</p>
+                <br/>
                 <h2>Donation Links:</h2>
                 <ul class="list-group">
                     <li class="list-group-item">
