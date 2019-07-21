@@ -16,6 +16,8 @@
     if (result !== '1') {
         $("#icon-run-game").toggleClass('display-none');
         $("#icon-refresh-game").toggleClass('display-none');
+        $("#icon-info").removeClass('text-muted');
+        $("#icon-info").addClass('text-light');
         consoleText(['${areyoudepressedQuote}'], 'text', ['LightCoral'], false, 100, 999999999, 1000);
     } else {
 

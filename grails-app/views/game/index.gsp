@@ -10,7 +10,7 @@
 
 <div class="h-100 row align-items-center">
 
-    <div class="col-1 glyphicon-container text-muted">
+    <div id="icon-info" class="col-1 glyphicon-container text-muted">
         <span class="glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#info-modal"></span>
     </div>
 
