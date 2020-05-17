@@ -12,11 +12,11 @@ class GameController {
 
     def index() {
         def execFilename
-        if (Environment.current == Environment.DEVELOPMENT) {
-            execFilename = 'areyoudepressed.exe'
-        } else {
+//        if (Environment.current == Environment.DEVELOPMENT) {
+//            execFilename = 'areyoudepressed.exe'
+//        } else {
             execFilename = 'areyoudepressed.o'
-        }
+//        }
 //        def subdir = new File('core/sessions/' + session.getId())
         def subdir = grailsApplication.mainContext.getResource('core/sessions/' + session.getId()).file
 
@@ -37,13 +37,13 @@ class GameController {
             sessionExeTemp << coreExe.bytes
         }
 
-        if (Environment.current == Environment.PRODUCTION) {
+//        if (Environment.current == Environment.PRODUCTION) {
 
             def subdirPath = subdir.getAbsolutePath()
             "/bin/chmod +x $subdirPath/areyoudepressed.o".execute()
             "/bin/chmod +x $subdirPath/_areyoudepressed.o".execute()
 
-        }
+//        }
 
         render(view: 'index', model: [sessionExe: sessionExe])
     }
@@ -51,11 +51,11 @@ class GameController {
     def runDepressionGameOnceAjax() {
 
         def execFilename
-        if (Environment.current == Environment.DEVELOPMENT) {
-            execFilename = 'areyoudepressed.exe'
-        } else {
+//        if (Environment.current == Environment.DEVELOPMENT) {
+//            execFilename = 'areyoudepressed.exe'
+//        } else {
             execFilename = 'areyoudepressed.o'
-        }
+//        }
 
 //      def subdir = new File('core/sessions/' + session.getId())
         def subdir = grailsApplication.mainContext.getResource('core/sessions/' + session.getId()).file

@@ -6,7 +6,7 @@
 
 <body>
 
-<span id="binary-text-background" class="background-text text-justify"></span>
+<span id="binary-text-background" class="background-text"></span>
 
 <div class="h-100 row align-items-center">
 

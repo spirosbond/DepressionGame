@@ -53,7 +53,7 @@
 
             <div class="col-lg-8 col-md-12">
                 <!-- Copyright -->
-                <div class="footer-copyright text-light text-center py-3">© 2019 Copyright - Open Source licensed under MIT License:
+                <div class="footer-copyright text-light text-center py-3">© ${Calendar.getInstance().get(Calendar.YEAR)} Copyright - Open Source licensed under MIT License:
                     <a class="text-danger" href="https://github.com/spirosbond/DepressionGame" target="_blank">Depression Game</a><br/>
                     <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">
                         <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/>
