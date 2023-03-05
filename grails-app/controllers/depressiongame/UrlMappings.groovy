@@ -9,10 +9,10 @@ class UrlMappings {
             }
         }
 
-        "/"(controller: "game", action: "index")
-        "/index_admin"(view: '/index_admin')
-        "500"(view: '/error')
-        "404"(view: '/notFound')
-        "/robots.txt" (view: "/robots")
+        "/"(controller:'game',action:'index')
+        "/index_admin"(view:'/index_admin')
+        "500"(view:'/error')
+        "404"(view:'/notFound')
+        "/robots.txt"(view:'/robots')
     }
 }
