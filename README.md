@@ -46,6 +46,10 @@ Every time a new session is initiated a new folder with the session ID is create
 
 In that folder the intact `areyoudepressed` executable and it's corrupted copy `_areyoudepressed` file are stored. After every execution, the new `_areyoudepressed` file is created and replaces the original `areyoudepressed` file.
 
+## Docker files
+
+This project is being deployed via docker. For more information look under `DepressionGame-Docker\`.
+
 ## The Good Cause
 
 This project is hoping to raise awareness about depression. If you enjoyed using it, learning from it or you were just moved, consider donating to one of the listed established foundations that help fight depression:
