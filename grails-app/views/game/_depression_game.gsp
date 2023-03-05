@@ -1,4 +1,4 @@
-<%@ page import="depressiongame.Game" %>
+<%@ page import="depressiongame_grails5.Game" %>
 <div class="console-container">
     <span id="text"></span>
 
@@ -7,7 +7,7 @@
 <script type="text/javascript">
 
     var destroyedIndexList = [];
-    <g:each in="${Game.findAllBySessionID(sessionID,[sort: "destroyedIndex", order: "desc"])}" var="game">
+    <g:each in="${Game.findAllBySessionID(params.sessionId, [sort: "destroyedIndex", order: "desc"])}" var="game">
     destroyedIndexList.push(${game.destroyedIndex});
     </g:each>
     console.log("destroying List: " + destroyedIndexList);

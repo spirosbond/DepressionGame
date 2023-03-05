@@ -5,14 +5,15 @@
 // You're free to add application-wide JavaScript to this file, but it's generally better
 // to create separate JavaScript files as needed.
 //
-//= require jquery-2.2.0.min
+//= require jquery-3.3.1.min
 //= require bootstrap
 //= require_tree .
 //= require_self
 
-function runDepressionGameOnceAjax(divToUpdate) {
+function runDepressionGameOnceAjax(divToUpdate, sessionid) {
     $.ajax({
         url: 'game/runDepressionGameOnceAjax',
+        data: { sessionId: sessionid },
         success: function (result) {
             divToUpdate.html(result);
         }

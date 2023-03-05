@@ -20,14 +20,14 @@
     </div>
 
     <div class="col-1 glyphicon-container text-danger">
-        <span id="icon-run-game" class="glyphicon glyphicon-circle-arrow-right" onclick="runDepressionGameOnceAjax($('#depression-game'))"></span>
+        <span id="icon-run-game" class="glyphicon glyphicon-circle-arrow-right" onclick="runDepressionGameOnceAjax($('#depression-game'), '${sessionId}')"></span>
         <span id="icon-refresh-game" class="glyphicon glyphicon-refresh display-none" onclick="location.reload();"></span>
     </div>
 </div>
 
 <script>
 
-    runDepressionGameOnceAjax($('#depression-game'))
+    runDepressionGameOnceAjax($('#depression-game'), '${sessionId}')
 </script>
 
 <!-- Modal -->
