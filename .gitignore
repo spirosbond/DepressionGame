@@ -12,3 +12,4 @@ out/
 .classpath
 src/main/webapp/core/sessions
 grails-app/views/layouts/_ganalytics.gsp
+*.war

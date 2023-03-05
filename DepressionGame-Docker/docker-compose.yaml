@@ -1,0 +1,18 @@
+version: '3.5'
+
+services:
+
+  depressiongame:  
+    image: depressiongame:latest
+    ports:
+      - 8080:8080
+    networks:
+      frontend:
+        ipv4_address: 172.29.0.5
+
+networks:
+  frontend:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.29.0.0/16
